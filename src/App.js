@@ -1,22 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ListaLibros from './ListaLibros';
+import AgregarLibros from './AgregarLibro';
+import Nav from './Nav';
 import './App.css';
+import EditarLiro from './EditarLibro'
 
 function App() {
   return (
     <div className="App">
+      <Nav />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ListaLibros />} />
+            <Route path="/agregar" element={<AgregarLibros />} />
+            <Route path="/editar/:id" element={<EditarLiro />} />
+          </Routes>
+        </BrowserRouter>
       </header>
     </div>
   );
